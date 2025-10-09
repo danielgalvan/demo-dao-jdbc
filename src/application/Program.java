@@ -8,11 +8,10 @@ public class Program {
 
 	public static void main(String[] args) {
 
-
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
-		Seller seller = sellerDao.findByIde(3);
-		
+		System.out.println("-----Teste 1 -> seller findByIde");
+		Seller seller = sellerDao.findByIde(3);		
 		System.out.println(seller);
 
 	}
