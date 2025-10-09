@@ -53,7 +53,7 @@ public class Program {
 		System.out.println("");
 		
 		System.out.println("-----Teste 6 -> seller delete");
-		sellerDao.deleteById(10);
+		sellerDao.deleteById(16);
 		System.out.println("deletado o vendedor");
 	}
 }

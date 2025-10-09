@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +35,7 @@ public class SellerDaoJDBC implements SellerDao {
 					+ " (Name, Email, BirthDate, BaseSalary, DepartmentId) "
 					+ " VALUES "
 					+ " (?, ?, ?, ?, ?) ",
-					java.sql.Statement.RETURN_GENERATED_KEYS);
+					Statement.RETURN_GENERATED_KEYS);
 			
 			st.setString(1, obj.getName());
 			st.setString(2, obj.getEmail());
@@ -100,12 +101,16 @@ public class SellerDaoJDBC implements SellerDao {
 		try {
 			st = conn.prepareStatement(
 						" DELETE FROM seller "
-						+ " WHERE Id = ? "
-					);
+						+ " WHERE Id = ? ",
+						Statement.RETURN_GENERATED_KEYS);
 			
 			st.setInt(1, id);
 
-			st.executeUpdate();
+			int rowsAffected = st.executeUpdate();
+			
+			if (rowsAffected == 0) {
+				throw new DbException("Id não existe! Nenhuma linha deletada!");
+			}
 		
 			
 		} catch (SQLException e) {
