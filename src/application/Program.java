@@ -49,5 +49,11 @@ public class Program {
 		newSeller = new Seller(8, "Ash Ketchun", "ash@nintendo.com", new Date(), 3500.00, new Department(4, null));
 		sellerDao.update(newSeller);
 		System.out.println("alterado o id = " + newSeller.getId());
+		
+		System.out.println("");
+		
+		System.out.println("-----Teste 6 -> seller delete");
+		sellerDao.deleteById(10);
+		System.out.println("deletado o vendedor");
 	}
 }
