@@ -42,5 +42,12 @@ public class Program {
 		Seller newSeller = new Seller(null, "Homer J. Simpson", "homer@fox.com", new Date(), 4500.00, new Department(3, null));
 		sellerDao.insert(newSeller);
 		System.out.println("new id = " + newSeller.getId());
+		
+		System.out.println("");
+		
+		System.out.println("-----Teste 5 -> seller update");
+		newSeller = new Seller(8, "Ash Ketchun", "ash@nintendo.com", new Date(), 3500.00, new Department(4, null));
+		sellerDao.update(newSeller);
+		System.out.println("alterado o id = " + newSeller.getId());
 	}
 }
